@@ -8,18 +8,22 @@
   
 }
 
-.input-box {
+.data-screen {
     padding: 10px;
     margin: 5px;
     width: 90%;
+    height: 20%;
+    border: 3px solid black;
     
 }
 
 .btn {
     margin: 3px;
-    border-color: black;
+    
     width: 10%;
     height: 10%;
+    transition: all .1s ease;
+
 }
 
 .buttons-div {
@@ -31,5 +35,11 @@
 }
 
 .btn-clicked {
-    background-color: cadetblue;
+    transform: scale(1.1);
+    border-color: #1d5e5e;
+    box-shadow: 0 0 1rem #998f6b;}
+
+#equals{
+    width: 22%;
+    
 }
