@@ -1,0 +1,23 @@
+{
+  "name": "top_calculator",
+  "version": "1.0.0",
+  "description": "the odin project fundamentals javascript basic final project",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danWalt/TOP_calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danWalt/TOP_calculator/issues"
+  },
+  "homepage": "https://github.com/danWalt/TOP_calculator#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}

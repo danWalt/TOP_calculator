@@ -1,6 +1,6 @@
 const numberButtons = document.querySelectorAll('.numbers');
 const dataScreen = document.querySelector('.data-screen');
-const clearButton = document.getElementById('clear')
+const clearAllButton = document.getElementById('clear-all')
 const operators = document.querySelectorAll('.operator')
 const decimalPoint = document.getElementById('decimal')
 const buttons = document.querySelectorAll('.btn')
@@ -9,22 +9,31 @@ const emptyContent = '';
 let numberOne = ''
 let numberTwo = ''
 let selectedOperator = ''
+let numberTwoFlag = false
 
 
 
 //when clicking a number button, the number is added to the data screen and a 'btn-clicked' class is added to flash a border
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
-        let content = button.textContent
-        dataScreen.textContent += content + ' '
         button.classList.add('btn-clicked')
+        if(numberOne && selectedOperator){
+            clearScreen()
+            dataScreen.textContent += button.textContent
+        }
+        else{
+            dataScreen.textContent += button.textContent
+        }
     })
 })
 
 //when clicking on the C button, the data screen clears and the button flashes
-clearButton.addEventListener('click', () => {
+clearAllButton.addEventListener('click', () => {
     dataScreen.textContent = emptyContent
-    clearButton.classList.add('btn-clicked')
+    update()
+    numberTwoFlag = false
+    numberOne = emptyContent
+    clearAllButton.classList.add('btn-clicked')
 
 })
 
@@ -34,28 +43,28 @@ operators.forEach(operator => {
     operator.addEventListener('click', () => {
         operator.classList.add('btn-clicked')
         let content = operator.textContent
-        console.log(content)
     
     if(!selectedOperator && !numberOne){
-        console.log(1)
+        
         numberOne = dataScreen.textContent
-        dataScreen.textContent += content + ' '
+        //dataScreen.textContent = content
         selectedOperator = content
     }
+    else if (!selectedOperator && numberOne){
+        selectedOperator = content
+        //dataScreen.textContent = content
+    }
     else if (selectedOperator && numberOne){
-        numberTwo = dataScreen.textContent.slice(dataScreen.textContent.indexOf(content) + 1)
+        numberTwo = dataScreen.textContent
         dataScreen.textContent = calculate();
-        numberOne = dataScreen.textContent
-        numberTwo = ''
-        selectedOperator = ''
+        update()
+        selectedOperator = content
     }
-    else if (!numberOne && !numberTwo) {
-        console.log(2)
-        dataScreen.textContent = calculate();
-        numberOne = dataScreen.textContent
-        numberTwo = ''
-        selectedOperator = ''
-    }
+    // else if (!numberOne && !numberTwo) {
+    //     dataScreen.textContent = calculate();
+    //     update()
+
+    // }
 })
 })
 
@@ -72,9 +81,7 @@ equals.addEventListener('click', () => {
     equals.classList.add('btn-clicked')
     numberTwo = dataScreen.textContent.slice(dataScreen.textContent.indexOf(selectedOperator) + 1)
     dataScreen.textContent = calculate();
-    numberOne = dataScreen.textContent
-    numberTwo = ''
-    selectedOperator = ''
+    update()
     }
 )
 
@@ -91,20 +98,38 @@ buttons.forEach(button => {
     function calculate(){
         switch(selectedOperator) {
             case '+':
+                numberTwoFlag = false
                 return Number(numberOne) + Number(numberTwo);
                 break;
             case '-':
+                numberTwoFlag = false
                 return Number(numberOne) - Number(numberTwo);
                 break;
             case '*':
+                numberTwoFlag = false
                 return Number(numberOne) * Number(numberTwo);
                 break;
             case '/':
+                numberTwoFlag = false
                 return Number(numberOne) / Number(numberTwo);
                 break;
             case '%':
+                numberTwoFlag = false
                 return ;
                 break;
         }
         
     }
+
+ function clearScreen(){  
+    if(!numberTwoFlag){
+        dataScreen.textContent = emptyContent
+        numberTwoFlag = true
+        }
+    }
+
+ function update() {
+    numberOne = dataScreen.textContent
+    numberTwo = emptyContent
+    selectedOperator = emptyContent
+ }
