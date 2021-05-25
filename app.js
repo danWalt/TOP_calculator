@@ -79,9 +79,11 @@ decimalPoint.addEventListener('click', () => {
 
 equals.addEventListener('click', () => {
     equals.classList.add('btn-clicked')
-    numberTwo = dataScreen.textContent.slice(dataScreen.textContent.indexOf(selectedOperator) + 1)
-    dataScreen.textContent = calculate();
-    update()
+    if(selectedOperator){
+        numberTwo = dataScreen.textContent.slice(dataScreen.textContent.indexOf(selectedOperator) + 1)
+        dataScreen.textContent = calculate();
+        update()
+        }
     }
 )
 
