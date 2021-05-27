@@ -1,3 +1,6 @@
+
+import calculate from './calculate.js';
+
 const numberButtons = document.querySelectorAll('.numbers');
 const dataScreen = document.querySelector('.data-screen');
 const clearAllButton = document.getElementById('clear-all')
@@ -56,15 +59,12 @@ operators.forEach(operator => {
     }
     else if (selectedOperator && numberOne){
         numberTwo = dataScreen.textContent
-        dataScreen.textContent = calculate();
+        dataScreen.textContent = calculate(selectedOperator, numberOne, numberTwo);
+        numberTwoFlag = false
         update()
         selectedOperator = content
     }
-    // else if (!numberOne && !numberTwo) {
-    //     dataScreen.textContent = calculate();
-    //     update()
-
-    // }
+  
 })
 })
 
@@ -81,7 +81,8 @@ equals.addEventListener('click', () => {
     equals.classList.add('btn-clicked')
     if(selectedOperator){
         numberTwo = dataScreen.textContent.slice(dataScreen.textContent.indexOf(selectedOperator) + 1)
-        dataScreen.textContent = calculate();
+        dataScreen.textContent = calculate(selectedOperator, numberOne, numberTwo);
+        numberTwoFlag = false
         update()
         }
     }
@@ -97,31 +98,7 @@ buttons.forEach(button => {
     button.addEventListener("transitionend", removeTransition)});
 
 
-    function calculate(){
-        switch(selectedOperator) {
-            case '+':
-                numberTwoFlag = false
-                return Number(numberOne) + Number(numberTwo);
-                break;
-            case '-':
-                numberTwoFlag = false
-                return Number(numberOne) - Number(numberTwo);
-                break;
-            case '*':
-                numberTwoFlag = false
-                return Number(numberOne) * Number(numberTwo);
-                break;
-            case '/':
-                numberTwoFlag = false
-                return Number(numberOne) / Number(numberTwo);
-                break;
-            case '%':
-                numberTwoFlag = false
-                return ;
-                break;
-        }
-        
-    }
+    
 
  function clearScreen(){  
     if(!numberTwoFlag){
@@ -135,3 +112,4 @@ buttons.forEach(button => {
     numberTwo = emptyContent
     selectedOperator = emptyContent
  }
+
