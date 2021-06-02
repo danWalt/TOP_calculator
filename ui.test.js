@@ -171,6 +171,55 @@ describe ('test calculations', () => {
         expect(await dataScreen.evaluate(dataScreen => dataScreen.innerText)).toBe('-2.4199999999999995');
         await browser.close();
     })  
+
+    it('541 / 213', async () => {
+        const browser = await chromium.launch({});
+        const page = await browser.newPage();
+        await page.goto('http://127.0.0.1:5500/index.html');
+        const dataScreen = await page.$('.data-screen');
+        await page.click("id=5");
+        await page.click("id=4");
+        await page.click("id=1");
+        await page.click("id=divide");
+        await page.click("id=2");
+        await page.click("id=1");
+        await page.click("id=3");
+        await page.click("id=equals");
+        expect(await dataScreen.evaluate(dataScreen => dataScreen.innerText)).toBe('2.539906103286385');
+        await browser.close();
+    })  
+
+
+    it('54 * 7.1', async () => {
+        const browser = await chromium.launch({});
+        const page = await browser.newPage();
+        await page.goto('http://127.0.0.1:5500/index.html');
+        const dataScreen = await page.$('.data-screen');
+        await page.click("id=5");
+        await page.click("id=4");
+        await page.click("id=multiply");
+        await page.click("id=7");
+        await page.click("id=decimal");
+        await page.click("id=1");
+        await page.click("id=equals");
+        expect(await dataScreen.evaluate(dataScreen => dataScreen.innerText)).toBe('383.4');
+        await browser.close();
+    })  
+
+
+    it('clear all', async () => {
+        const browser = await chromium.launch({});
+        const page = await browser.newPage();
+        await page.goto('http://127.0.0.1:5500/index.html');
+        const dataScreen = await page.$('.data-screen');
+        await page.click("id=5");
+        await page.click("id=decimal");
+        await page.click("id=4");
+        await page.click("id=1");
+        await page.click("id=clear-all");
+        expect(await dataScreen.evaluate(dataScreen => dataScreen.innerText)).toBe('');
+        await browser.close();
+    })  
 });
 
    
