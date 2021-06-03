@@ -1,10 +1,9 @@
 .container {
   margin: auto;
   width: 380px;
-  height: 400px;
+  height: 500px;
   padding: 10px;
   margin-top:30px;
-
   border: 2px solid black;
   background-color: #aaaaaa;
   border-radius: 15px;
@@ -13,33 +12,37 @@
 }
 
 .calculator-body {
-    text-align: right;
-    
-
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .data-screen {
     padding: 15px;
-    margin: 10px 8px 10px 20px;
-    
-    width: 80%;
+    margin: 10px;
+    flex-basis: auto;
+    flex-wrap: wrap;
     height: 50px;
     border: 2px solid black;
     background-color: #eee;
     border-radius: 5px;
-    vertical-align: middle;    
+    text-align: right;
+    flex: 1 0 65%;
+
 
 }
 
 
 .btn {
-    height:50px;
-    width:75px;
+    height:70px;
     margin: 5px;
     transition: all .1s ease;
     background-color: #eee;
-    border-radius: 10%;
+    border-radius: 8%;
     border: 2px solid black;
+    flex: 1 0 21%;
+    font-size: 20px;
+
 
 }
 
@@ -47,7 +50,21 @@
     margin: auto;
     text-align: center;
     vertical-align:middle;
-        
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.clear {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.clear > * {
+    flex: 2 0 190%;
+
+
+
 }
 
 .btn-clicked {
@@ -57,14 +74,12 @@
 
 
 #clear-all {
-    width: 162px;
     background-color: #faa;
     border-radius: 8%;
 
 }
 
 #clear {
-    width: 162px;
     background-color: #aaf;
     border-radius: 8%;
 
