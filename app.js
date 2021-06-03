@@ -4,6 +4,7 @@ import calculate from './calculate.js';
 const numberButtons = document.querySelectorAll('.numbers');
 const dataScreen = document.querySelector('.data-screen');
 const clearAllButton = document.getElementById('clear-all')
+const clearButton = document.getElementById('clear')
 const operators = document.querySelectorAll('.operator')
 const decimalPoint = document.getElementById('decimal')
 const buttons = document.querySelectorAll('.btn')
@@ -24,20 +25,29 @@ numberButtons.forEach(button => {
             clearScreen()
             dataScreen.textContent += button.textContent
         }
+        else if (dataScreen.textContent == '0'){
+            numberOne = button.textContent
+            dataScreen.textContent = button.textContent
+        }
         else{
             dataScreen.textContent += button.textContent
         }
     })
 })
 
-//when clicking on the C button, the data screen clears and the button flashes
+//when clicking on the AC button, the data screen clears and the button flashes
 clearAllButton.addEventListener('click', () => {
-    dataScreen.textContent = emptyContent
+    dataScreen.textContent = 0
     update()
     numberTwoFlag = false
     numberOne = emptyContent
     clearAllButton.classList.add('btn-clicked')
+})
 
+//when clicking on the C button, the last clicked number is deleted and the button flashes
+clearButton.addEventListener('click', () => {
+    dataScreen.textContent = dataScreen.textContent.slice(0, -1)
+    clearButton.classList.add('btn-clicked')
 })
 
 
