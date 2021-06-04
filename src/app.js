@@ -26,7 +26,6 @@ numberButtons.forEach(button => {
             dataScreen.textContent += button.textContent
         }
         else if (dataScreen.textContent == '0'){
-            numberOne = button.textContent
             dataScreen.textContent = button.textContent
         }
         else{
@@ -58,14 +57,11 @@ operators.forEach(operator => {
         let content = operator.textContent
     
     if(!selectedOperator && !numberOne){
-        
         numberOne = dataScreen.textContent
-        //dataScreen.textContent = content
         selectedOperator = content
     }
     else if (!selectedOperator && numberOne){
         selectedOperator = content
-        //dataScreen.textContent = content
     }
     else if (selectedOperator && numberOne){
         numberTwo = dataScreen.textContent
@@ -81,16 +77,17 @@ operators.forEach(operator => {
 //when clicking on the decimal point button, the decimal point is added to the data screen and the button flashes
 decimalPoint.addEventListener('click', () => {
     decimalPoint.classList.add('btn-clicked')
-    if (dataScreen.textContent.indexOf('.') == -1 && dataScreen.textContent.length > 0) {
-        let content = decimalPoint.textContent
-        dataScreen.textContent += content
-    }
+        dataScreen.textContent += decimalPoint.textContent
+    
 })
 
 equals.addEventListener('click', () => {
     equals.classList.add('btn-clicked')
     if(selectedOperator){
-        numberTwo = dataScreen.textContent.slice(dataScreen.textContent.indexOf(selectedOperator) + 1)
+        console.log(selectedOperator)
+        console.log(dataScreen.textContent)
+        numberTwo = dataScreen.textContent
+        console.log(calculate(selectedOperator, numberOne, numberTwo))
         dataScreen.textContent = calculate(selectedOperator, numberOne, numberTwo);
         numberTwoFlag = false
         update()

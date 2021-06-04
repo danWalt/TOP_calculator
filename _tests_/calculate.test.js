@@ -1,5 +1,5 @@
 //TOP_CALCULATOR Project tests
-import calculate from './calculate.js';
+import calculate from '../src/calculate.js';
 const int1 = 1
 const int2 = 2
 const zero = 0

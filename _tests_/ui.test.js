@@ -217,7 +217,7 @@ describe ('test calculations', () => {
         await page.click("id=4");
         await page.click("id=1");
         await page.click("id=clear-all");
-        expect(await dataScreen.evaluate(dataScreen => dataScreen.innerText)).toBe('');
+        expect(await dataScreen.evaluate(dataScreen => dataScreen.innerText)).toBe('0');
         await browser.close();
     })  
 });
