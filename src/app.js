@@ -37,7 +37,7 @@ numberButtons.forEach(button => {
 //when clicking on the AC button, the data screen clears and the button flashes
 clearAllButton.addEventListener('click', () => {
     dataScreen.textContent = 0
-    update()
+    updateScreenAfterCalculation()
     numberTwoFlag = false
     numberOne = emptyContent
     clearAllButton.classList.add('btn-clicked')
@@ -67,7 +67,7 @@ operators.forEach(operator => {
         numberTwo = dataScreen.textContent
         dataScreen.textContent = calculate(selectedOperator, numberOne, numberTwo);
         numberTwoFlag = false
-        update()
+        updateScreenAfterCalculation()
         selectedOperator = content
     }
   
@@ -90,7 +90,7 @@ equals.addEventListener('click', () => {
         console.log(calculate(selectedOperator, numberOne, numberTwo))
         dataScreen.textContent = calculate(selectedOperator, numberOne, numberTwo);
         numberTwoFlag = false
-        update()
+        updateScreenAfterCalculation()
         }
     }
 )
@@ -114,9 +114,8 @@ buttons.forEach(button => {
         }
     }
 
- function update() {
+ function updateScreenAfterCalculation() {
     numberOne = dataScreen.textContent
     numberTwo = emptyContent
     selectedOperator = emptyContent
  }
-

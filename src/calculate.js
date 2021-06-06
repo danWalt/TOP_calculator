@@ -18,16 +18,8 @@ function calculate(selectedOperator, numberOne, numberTwo){
             } 
             return Number(numberOne) / Number(numberTwo);
             break;
-        case '%':
-            if(numberTwo == 0){
-                return 'can not do Modulo by 0'
-            } 
-            return Number(numberOne) % Number(numberTwo);
-            break;
     }
     
 }
-
-
 
  export default calculate;
